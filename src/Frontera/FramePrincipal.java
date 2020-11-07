@@ -1,7 +1,9 @@
 package Frontera;
+import DAO.UsuarioDAO;
 import Entidad.Sistema;
 import Entidad.Usuario;
 import java.util.ArrayList;
+
 
 public class FramePrincipal extends javax.swing.JFrame {
     
@@ -100,14 +102,14 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void registroBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroBActionPerformed
         panelPrincipal.setVisible(false);
         panelPrincipal.removeAll();
-        panelPrincipal.add(registro);
+        panelPrincipal.add( registro );
         panelPrincipal.setVisible(true);
     }//GEN-LAST:event_registroBActionPerformed
 
     private void ingresoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresoBActionPerformed
         panelPrincipal.setVisible(false);
         panelPrincipal.removeAll();
-        panelPrincipal.add(ingreso);
+        panelPrincipal.add( ingreso );
         panelPrincipal.setVisible(true);
     }//GEN-LAST:event_ingresoBActionPerformed
 
@@ -146,6 +148,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         });
     }
     public void inicializacion(){
+        UsuarioDAO dao = new UsuarioDAO();
         /*
          *  Creamos el arreglo: Necesitamos importar la clase
          *  ArrayList y la clase entidad.Usuario
@@ -183,16 +186,17 @@ public class FramePrincipal extends javax.swing.JFrame {
          *  Le asignamos el arreglo usuario a la variable de clase "sistema"
          */
         
-        sistema.setUsuarios(usuarios);
+        //sistema.setUsuarios(usuarios);
         
         /*
          *  Recorremos con un iterador para asegurarnos
          */
         
-        for(Usuario u: sistema.getUsuarios()){
+        for (Usuario u: usuarios) {
             System.out.println(u.getNombre());
             System.out.println(u.getPassword());
-            System.out.println("------------");
+            System.out.println("-------------");
+            dao.crear(u);
         }
     }
 
