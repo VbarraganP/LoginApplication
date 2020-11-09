@@ -7,9 +7,10 @@ import java.util.ArrayList;
 import org.junit.Test;
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import static org.junit.Assert.assertEquals;
+
 
 public class TestLogin {
     private static ValidarLogin validarLogin = new ValidarLogin();
@@ -99,6 +100,7 @@ public class TestLogin {
         assertEquals(validarLogin.verificarLogin(u), DATOS_INCORRECTOS);
     }
     
+    
     @Test
     public void testContrasenia() {
         Usuario u = new Usuario();
@@ -114,6 +116,7 @@ public class TestLogin {
         u.setPassword("A234");
         assertEquals(validarLogin.verificarLogin(u), DATOS_INCORRECTOS);
     }
+    
     
     @Test
     public void testTodoCorrecto() {
@@ -131,4 +134,5 @@ public class TestLogin {
         u.setPassword("12345");
         assertEquals(validarLogin.verificarLogin(u), USUARIO_AUTORIZADO);
     }
+    
 }
